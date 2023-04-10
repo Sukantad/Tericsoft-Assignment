@@ -31,7 +31,7 @@ userroute.post("/login", async (req, res) => {
     return res.status(200).send({
       status: "success",
       Token: token,
-      id: email._id,
+      Id: email._id,
     });
   } catch (error) {
     return res.status(500).send({
@@ -39,29 +39,67 @@ userroute.post("/login", async (req, res) => {
       data: "Internal Server Error",
     });
   }
+ 
 });
+
+
 
 userroute.post("/reg", async (req, res) => {
   try {
-    const find = await user.findOne({ email: req.body.email });
-    if (find) {
+    const { name, email, password } = req.body;
+
+    const user_email = await user.findOne({ email:email });
+    if (user_email)
       return res.status(400).send({
-        status: "error",
-        data: "User already exists",
+        message: "This email already exists, please type a unique email id.",
       });
-    }
-    const details = await user.create(req.body);
-    return res.send({
-      status: "success",
+
+    if (password.length < 6)
+      return res
+        .status(400)
+        .send({ message: "Password must be at least 6 characters." });
+
+    const passwordHashed = await bcrypt.hash(password, 12);
+
+    const newUser = new user({
+      name,
+      email,
+      password: passwordHashed,
+    
     });
-  } catch (error) {
-    return res.status(500).send({
-      status: "Error",
-      data: "Internal Server Error",
+
+    const accessToken = createToken({ id: newUser._id });
+
+    await newUser.save();
+
+    res.send({
+      message: "Register Success!",
+      accessToken,
+      Id:  newUser._id
+      
     });
+  } catch (err) {
+    return res.status(500).send({ message: err.message });
   }
 });
 
+const createToken = (payload) => {
+  return jwt.sign(payload, process.env.JWT_TOKEN);
+};
 
+userroute.get("/getProfile/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const Profile = await user.find({ _id: id });
+    var User = {
+      _id: Profile._id,
+      name: Profile.name,
+      email: Profile.email,
+    };
+    res.status(200).send(Profile);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = { userroute };
