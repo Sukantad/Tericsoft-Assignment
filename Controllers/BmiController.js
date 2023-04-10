@@ -7,7 +7,8 @@ const BmiRoute = express.Router();
 BmiRoute.post("/calculate-bmi", async (req, res) => {
   try {
     const { userId, height, weight } = req.body;
-    const bmi = weight / (height / 100) ** 2;
+    let temp = weight / (height * height);
+    var bmi = temp.toFixed(2);
     const timestamp = new Date();
     const calculation = new BmiCalculation({
       userId,

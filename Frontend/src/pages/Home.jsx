@@ -23,12 +23,17 @@ function Home() {
 
 
     const handleSubmit = async () => {
-        inputData.height && inputData.width && await fetchBmi(inputData);
-        setInputData({
-            height: "",
-            weight: ""
-        })
+
+        if (inputData.height.length && inputData.weight.length) {
+            await fetchBmi(inputData);
+            setInputData({
+                height: "",
+                weight: ""
+            })
+        }
     }
+
+
 
 
 
@@ -38,7 +43,7 @@ function Home() {
     return (
 
         <Box width={{ xs: "90%", sm: "42%", md: "32%", lg: "32%", xl: "32%" }} m='auto' mt={'50px'}>
-            {bmi ? <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {Math.floor(bmi)}</Typography> : ""}
+            {bmi ? <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {bmi}</Typography> : ""}
             <Box width={'100%'} display={'flex'} justifyContent={'space-between'} >
                 <TextField id="outlined-basic" type='number' label="Height(feets)" variant="outlined" name="height"
                     value={height}

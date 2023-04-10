@@ -45,7 +45,7 @@ function History() {
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
 
-                            <TableCell> {Math.floor(ele.bmi)} </TableCell>
+                            <TableCell> {ele.bmi} </TableCell>
                             <TableCell align="left">   {FormatDate(ele.timestamp)}
                             </TableCell>
                         </TableRow>
