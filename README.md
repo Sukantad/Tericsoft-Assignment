@@ -24,6 +24,11 @@
 - Express
 - MongoDB
 
+ ## How to run in locally 
+ - first clone this repo 
+ - install npm packages 
+ - npm start 
+ 
 ## Here are some sample screen shoot
 
 ## Singup Page
