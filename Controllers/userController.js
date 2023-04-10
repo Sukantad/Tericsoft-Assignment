@@ -28,7 +28,7 @@ userroute.post("/login", async (req, res) => {
     }
 
     const token = jwt.sign(req.body, JWT_SECRET);
-    return res.send({
+    return res.status(200).send({
       status: "success",
       Token: token,
       id: email._id,

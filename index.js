@@ -2,6 +2,7 @@ const express = require("express");
 const ConnectionFn = require("./config/db");
 const { userroute } = require("./Controllers/userController");
 const cors = require("cors");
+const BmiRoute = require("./Controllers/BmiController");
 const app = express();
 
 
@@ -10,7 +11,7 @@ app.use(cors());
 const PORT = process.env.PORT || 3050;
 
 app.use("/", userroute);
-
+app.use("/",BmiRoute);
 
 app.get("*", (req, res) => {
   res.send("Not found");
