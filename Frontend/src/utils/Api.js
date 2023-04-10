@@ -1,6 +1,6 @@
 import axios from "axios";
 
-let baseurl = "http://localhost:3050";
+let baseurl = "https://tericsoft-assignment-production.up.railway.app";
 export async function getBmiValue(data) {
   const res = await axios.post(`${baseurl}/calculate-bmi`, data);
   return res.data;

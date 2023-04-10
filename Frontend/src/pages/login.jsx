@@ -47,7 +47,7 @@ export default function Login() {
         }
         try {
 
-            const res = await axios.post("http://localhost:3050/login", postdata)
+            const res = await axios.post("https://tericsoft-assignment-production.up.railway.app/login", postdata)
             console.log(res.data, "data");
             const ss = localStorage.setItem("ID", res?.data.Id)
 

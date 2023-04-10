@@ -4,6 +4,18 @@
 
 - If any user want to use this website they have to create their account and they can check their history of bmi as well
 
+### Live link -https://bmi-calculator-sukantad.vercel.app/
+
+### Backend deployed link - https://tericsoft-assignment-production.up.railway.app/
+
+## Features
+
+- Login & Signup (JWT & And hashing the password)
+- BMI Calculator
+- History Check
+- Profile details view
+- Logout
+
 ## Tech Stack
 
 - React

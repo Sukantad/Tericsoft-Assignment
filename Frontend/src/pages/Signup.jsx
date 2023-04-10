@@ -48,7 +48,7 @@ export default function Signup() {
             password: data.get('password'),
         }
         try {
-            const res = await axios.post("http://localhost:3050/reg", postdata)
+            const res = await axios.post("https://tericsoft-assignment-production.up.railway.app/reg", postdata)
             console.log(res.data, "data");
             const ss = localStorage.setItem("ID", res?.data.Id)
             const userId = localStorage.getItem("ID") || null;
@@ -59,8 +59,8 @@ export default function Signup() {
             }
 
         } catch (error) {
-            alert(error?.response?.data?.message )
-              console.log(error, "while signup")
+            alert(error?.response?.data?.message)
+            console.log(error, "while signup")
             //   alert(,"done")
             //   return  <Alert severity="error"></Alert>
 
