@@ -23,6 +23,16 @@ BmiRoute.post("/calculate-bmi", async (req, res) => {
   }
 });
 
+// Route to get BMI calculation history
 
+BmiRoute.get("/bmi-history/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const value = await BmiCalculation.find({ userId: id });
+    res.status(200).send(value);
+  } catch (error) {
+    res.status(500).send(error);
+  }
+});
 
 module.exports = BmiRoute;
