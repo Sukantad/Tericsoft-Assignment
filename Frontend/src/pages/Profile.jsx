@@ -21,8 +21,9 @@ const Profile = () => {
 
 
     const handleClick = async (event) => {
-        setOpen(event.currentTarget);
-        const res = await getProfile(userId);
+        const userId = localStorage.getItem("ID") || null;
+        userId && setOpen(event.currentTarget);
+        const res = userId && await getProfile(userId);
         setProfile(res[0])
     };
 

@@ -10,12 +10,13 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import { Alert } from '@mui/material';
 
 function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link  style={{textDecoration:"none", color:"Black"}} color="inherit" href="https://mui.com/">
+            <Link style={{ textDecoration: "none", color: "Black" }} color="inherit" href="https://mui.com/">
                 Your Website
             </Link>{' '}
             {new Date().getFullYear()}
@@ -28,7 +29,6 @@ const theme = createTheme();
 
 export default function Signup() {
     const [emailError, setEmailError] = React.useState(false);
-    const userId = localStorage.getItem("ID") || null;
     const navigate = useNavigate();
 
 
@@ -51,6 +51,7 @@ export default function Signup() {
             const res = await axios.post("http://localhost:3050/reg", postdata)
             console.log(res.data, "data");
             const ss = localStorage.setItem("ID", res?.data.Id)
+            const userId = localStorage.getItem("ID") || null;
 
 
             if (userId) {
@@ -58,7 +59,11 @@ export default function Signup() {
             }
 
         } catch (error) {
-            console.log(error, "while signup")
+            alert(error?.response?.data?.message )
+              console.log(error, "while signup")
+            //   alert(,"done")
+            //   return  <Alert severity="error"></Alert>
+
         }
 
 
@@ -141,7 +146,7 @@ export default function Signup() {
 
                             </Grid>
                             <Grid item>
-                                <Link to="/login" variant="body2"  style={{textDecoration:"none", color:"Black"}}>
+                                <Link to="/login" variant="body2" style={{ textDecoration: "none", color: "Black" }}>
                                     {"Do you have an account? Sign in"}
                                 </Link>
                             </Grid>

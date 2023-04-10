@@ -21,7 +21,8 @@ function AllRoutes() {
         <Route path="/login" element={<Login />}></Route>
 
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/history" element={<History />}></Route>
+        <Route path="/history" element={
+          <PrivateRoute><History /> </PrivateRoute> }></Route>
 
       </Routes>
     </div>

@@ -29,9 +29,9 @@ function History() {
     }, [])
 
     return (
-        <div>
+        <Box width={{ xs: "80%", sm: "70%", md: "60%", lg: "50%" }} margin={'auto'}>
 
-            <Table aria-label="simple table" style={{ width: "50%", margin: "auto" }}>
+            <Table aria-label="simple table">
                 <TableHead>
                     <TableRow>
                         <TableCell>BMI Value</TableCell>
@@ -39,24 +39,22 @@ function History() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {history?.map((ele) => (
+                    {history?.length ? <>   {history?.map((ele) => (
                         <TableRow
-
+                            key={ele?.bmi}
                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
 
-
-
-                            <TableCell>{ele.bmi} </TableCell>
+                            <TableCell> {Math.floor(ele.bmi)} </TableCell>
                             <TableCell align="left">   {FormatDate(ele.timestamp)}
                             </TableCell>
                         </TableRow>
-                    ))}
+                    ))}</> : "No Record found"}
                 </TableBody>
             </Table>
 
-           
-        </div>
+
+        </Box>
     );
 }
 

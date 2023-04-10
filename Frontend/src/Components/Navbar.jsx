@@ -53,8 +53,8 @@ function Navbar() {
                         </Typography>
 
 
-                      {userId? <>  <Link to="/history" style={{ textDecoration: 'none', color: 'white', }}> <Button color="inherit" > History   </Button></Link>
-                        <Profile /> </> :""}
+                        <Link to="/history" style={{ textDecoration: 'none', color: 'white', }}> <Button color="inherit" > History   </Button></Link>
+                        <Profile /> 
 
                     </Toolbar>
                 </AppBar>

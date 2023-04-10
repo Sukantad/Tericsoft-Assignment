@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import axios from 'axios'
-import { Box, Button, Input, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Input, TextField, Typography } from '@mui/material';
 import { getBmiValue } from '../utils/Api';
 
 
@@ -23,16 +23,13 @@ function Home() {
 
 
     const handleSubmit = async () => {
-        await fetchBmi(inputData);
+        inputData.height && inputData.width && await fetchBmi(inputData);
         setInputData({
             height: "",
             weight: ""
         })
     }
 
-  setTimeout(() => {
-    
-  }, 0);
 
 
 
@@ -40,8 +37,8 @@ function Home() {
 
     return (
 
-        <Box width={'32%'} m='auto' mt={'50px'}>
-            {bmi ? <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {bmi}</Typography> : ""}
+        <Box width={{ xs: "90%", sm: "42%", md: "32%", lg: "32%", xl: "32%" }} m='auto' mt={'50px'}>
+            {bmi ? <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {Math.floor(bmi)}</Typography> : ""}
             <Box width={'100%'} display={'flex'} justifyContent={'space-between'} >
                 <TextField id="outlined-basic" type='number' label="Height(feets)" variant="outlined" name="height"
                     value={height}
@@ -50,7 +47,7 @@ function Home() {
                     name="weight"
                     value={weight}
                     onChange={handleChange} /></Box>
-            <Box width='25%' margin={'auto'} marginTop={'30px'} >    <Button variant="contained" onClick={handleSubmit}> Calculate</Button></Box>
+            <Box width='30%' margin={'auto'} marginTop={'30px'} >    <Button variant="contained" onClick={handleSubmit}> Calculate</Button></Box>
 
 
 
