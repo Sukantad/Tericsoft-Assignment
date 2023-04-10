@@ -91,11 +91,6 @@ userroute.get("/getProfile/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const Profile = await user.find({ _id: id });
-    var User = {
-      _id: Profile._id,
-      name: Profile.name,
-      email: Profile.email,
-    };
     res.status(200).send(Profile);
   } catch (error) {
     res.status(500).send(error);

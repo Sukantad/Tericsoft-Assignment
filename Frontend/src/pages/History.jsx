@@ -55,14 +55,7 @@ function History() {
                 </TableBody>
             </Table>
 
-            {/* {history?.map((ele) => (
-                <Box>
-
-                    {Math.floor(ele.bmi)}
-                    {FormatDate(ele.timestamp)}
-
-                </Box>
-            ))} */}
+           
         </div>
     );
 }

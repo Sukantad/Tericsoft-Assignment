@@ -30,10 +30,9 @@ function Home() {
         })
     }
 
-
-
-
-
+  setTimeout(() => {
+    
+  }, 0);
 
 
 
@@ -42,7 +41,7 @@ function Home() {
     return (
 
         <Box width={'32%'} m='auto' mt={'50px'}>
-          {bmi?  <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {bmi}</Typography>:""}
+            {bmi ? <Typography textAlign={'center'} pb={'22px'}> Your Bmi is : {bmi}</Typography> : ""}
             <Box width={'100%'} display={'flex'} justifyContent={'space-between'} >
                 <TextField id="outlined-basic" type='number' label="Height(feets)" variant="outlined" name="height"
                     value={height}
@@ -52,6 +51,9 @@ function Home() {
                     value={weight}
                     onChange={handleChange} /></Box>
             <Box width='25%' margin={'auto'} marginTop={'30px'} >    <Button variant="contained" onClick={handleSubmit}> Calculate</Button></Box>
+
+
+
         </Box>
 
     );

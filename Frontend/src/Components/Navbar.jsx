@@ -17,6 +17,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
+import Profile from '../pages/Profile';
 
 function Navbar() {
     const [state, setState] = React.useState({
@@ -39,50 +40,25 @@ function Navbar() {
 
 
     const theme = useTheme();
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+    const userId = localStorage.getItem("ID") || null;
     return (
         <div>
 
             <div style={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton
-                            edge="end"
-                            style={{
-                                marginRight: "1rem",
-                                display: isSmallScreen ? "flex" : "none",
-                            }}
-                            color="inherit"
-                            aria-label="menu"
-                            onClick={toggleDrawer(anchor, true)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
+
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                             <Link to='/' style={{ textDecoration: 'none', color: 'white' }}>   BMI Calculator </Link>
                         </Typography>
 
 
-                        <Link to="/history" style={{ textDecoration: 'none', color: 'white', display: isSmallScreen ? "none" : "flex" }}> <Button color="inherit" > History   </Button></Link>
-                        <Link to="" style={{ textDecoration: 'none', color: 'white', display: isSmallScreen ? "none" : "flex" }}> <Button color="inherit" > User    </Button></Link>
-
+                      {userId? <>  <Link to="/history" style={{ textDecoration: 'none', color: 'white', }}> <Button color="inherit" > History   </Button></Link>
+                        <Profile /> </> :""}
 
                     </Toolbar>
                 </AppBar>
-                <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                    <div
-                        style={{ width: "300px" }}
-                        role="presentation"
-                        onClick={toggleDrawer(anchor, false)}
-                        onKeyDown={toggleDrawer(anchor, false)}
-                    >
 
-                        <Box bgcolor={'#1976D2'} width={'200px'} m={'auto'} mb={'15px'} borderRadius={'8px'} mt="30px">   <Link to="/user" style={{ textDecoration: 'none', color: 'white', textAlign: 'center' }}> <Button color="inherit" >  User  </Button></Link>
-                        </Box>
-
-
-                    </div>
-                </Drawer>
             </div>
 
         </div>

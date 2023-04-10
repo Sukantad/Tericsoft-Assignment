@@ -19,7 +19,7 @@ function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/" style={{ textdecoration: "none", color: "black" }}>
+            <Link color="inherit" href="https://mui.com/" style={{ textDecoration: "none", color: "Black" }}>
                 Your Website
             </Link>{' '}
             {new Date().getFullYear()}
@@ -35,11 +35,7 @@ export default function Login() {
 
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (userId) {
-    //         navigate('/')
-    //     }
-    // }, [])
+
 
 
     const handleSubmit = async (event) => {
@@ -135,7 +131,7 @@ export default function Login() {
 
                             </Grid>
                             <Grid item>
-                                <Link to="/signup" variant="body2">
+                                <Link to="/signup" variant="body2" style={{ textDecoration: "none", color: "Black" }}>
                                     {"Don't have an account? Sign Up"}
                                 </Link>
                             </Grid>
