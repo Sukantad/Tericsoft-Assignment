@@ -29,7 +29,7 @@
  - install npm packages 
  - npm start 
  
-## Here are some sample screen shoot
+## Here are some sample screen shot
 
 ## Singup Page
 
