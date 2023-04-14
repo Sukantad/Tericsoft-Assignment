@@ -19,7 +19,6 @@ userroute.post("/login", async (req, res) => {
       });
     }
     const password = bcrypt.compareSync(req.body.password, email.password);
-    console.log(password);
     if (!password) {
       return res.status(400).send({
         status: "error",
@@ -39,16 +38,13 @@ userroute.post("/login", async (req, res) => {
       data: "Internal Server Error",
     });
   }
- 
 });
-
-
 
 userroute.post("/reg", async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    const user_email = await user.findOne({ email:email });
+    const user_email = await user.findOne({ email: email });
     if (user_email)
       return res.status(400).send({
         message: "This email already exists, please type a unique email id.",
@@ -59,13 +55,10 @@ userroute.post("/reg", async (req, res) => {
         .status(400)
         .send({ message: "Password must be at least 6 characters." });
 
-    const passwordHashed = await bcrypt.hash(password, 12);
-
     const newUser = new user({
       name,
       email,
-      password: passwordHashed,
-    
+      password,
     });
 
     const accessToken = createToken({ id: newUser._id });
@@ -75,8 +68,7 @@ userroute.post("/reg", async (req, res) => {
     res.send({
       message: "Register Success!",
       accessToken,
-      Id:  newUser._id
-      
+      Id: newUser._id,
     });
   } catch (err) {
     return res.status(500).send({ message: err.message });
