@@ -47,7 +47,7 @@ export default function Login() {
         }
         try {
 
-            const res = await axios.post("https://tericsoft-assignment-production.up.railway.app/login", postdata)
+            const res = await axios.post("https://vast-red-catfish-wear.cyclic.app//login", postdata)
             console.log(res.data, "data");
             const ss = localStorage.setItem("ID", res?.data.Id)
 

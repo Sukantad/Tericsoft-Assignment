@@ -48,7 +48,7 @@ export default function Signup() {
             password: data.get('password'),
         }
         try {
-            const res = await axios.post("https://tericsoft-assignment-production.up.railway.app/reg", postdata)
+            const res = await axios.post("https://vast-red-catfish-wear.cyclic.app//reg", postdata)
             console.log(res.data, "data");
             const ss = localStorage.setItem("ID", res?.data.Id)
             const userId = localStorage.getItem("ID") || null;

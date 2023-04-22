@@ -6,7 +6,7 @@
 
 ### Live link -https://bmi-calculator-sukantad.vercel.app/
 
-### Backend deployed link - https://tericsoft-assignment-production.up.railway.app/
+### Backend deployed link - https://vast-red-catfish-wear.cyclic.app//
 
 ## Features
 
